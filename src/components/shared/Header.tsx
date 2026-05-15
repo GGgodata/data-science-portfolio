@@ -34,12 +34,12 @@ export default function Header() {
           ))}
         </nav>
 
-        <a
-          href="#"
+        <Link
+          to="/providers/onboarding"
           className="bg-wine text-cream px-6 py-3 rounded-full text-sm font-medium hover:bg-wine/90 transition-colors"
         >
           התחילי הרשמה
-        </a>
+        </Link>
       </div>
     </header>
   )
