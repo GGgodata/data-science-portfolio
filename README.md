@@ -1,73 +1,82 @@
-# React + TypeScript + Vite
+# NANY Provider Prototype
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+פרוטוטייפ ויזואלי של צד הספק (נותן השירות) בפלטפורמת NANY — Marketplace שירותי בית פרימיום בישראל.
 
-Currently, two official plugins are available:
+⚠️ זהו פרוטוטייפ ויזואלי בלבד. כל הנתונים הם mock data, אין backend ואין auth אמיתי.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## נקודות גישה
 
-## React Compiler
+- `/providers/join` — דף נחיתה לספקיות
+- `/providers/onboarding` — תהליך הרשמה ב-16 שלבים
+- `/providers/onboarding/success` — מסך הצלחה
+- `/providers/dashboard` — דשבורד ספקית (Home, הזמנות פתוחות, ההזמנות שלי, לוז, הכנסות, דירוגים, פרופיל)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## פיתוח
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+פותח את האפליקציה ב-`http://localhost:5173`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Build
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
 ```
+
+Build artifacts יוצרים בתיקיית `dist/`.
+
+## Deployment ל-Netlify
+
+הקובץ `netlify.toml` כבר מוגדר (build command + SPA fallback redirect).
+
+### אפשרות א' — Drag & Drop
+1. הרץ `npm run build`
+2. כנס ל-[app.netlify.com](https://app.netlify.com)
+3. גרור את תיקיית `dist/` ל-dashboard. תקבל URL אקראי תוך כ-30 שניות.
+
+### אפשרות ב' — Git
+דחוף את ה-repo ל-GitHub, חבר ב-Netlify, ו-deploy אוטומטי בכל push.
+
+### אפשרות ג' — CLI
+```bash
+npm install -g netlify-cli
+netlify login
+netlify deploy --prod --dir=dist
+```
+
+## מבנה הפרויקט
+
+```
+src/
+├── components/
+│   ├── shared/       # Header, Footer, Layout
+│   ├── landing/      # Hero, WhyNany, HowItWorks, Testimonials, FAQ, FinalCTA
+│   ├── onboarding/   # OnboardingLayout, ProgressBar, StepWrapper + 16 step components
+│   ├── dashboard/    # Sidebar, TopBar, KPICard, JobCard, BookingCard, charts, modals, etc.
+│   └── ui/           # (reserved for future shared UI primitives)
+├── pages/
+│   ├── Landing.tsx
+│   ├── Onboarding.tsx
+│   ├── OnboardingSuccess.tsx
+│   └── dashboard/    # Home, AvailableJobs, MyJobs, Schedule, Earnings, Reviews, Profile
+├── context/          # OnboardingContext
+├── data/             # categories, subcategories, cities, mock-jobs, mock-bookings, mock-earnings, mock-reviews
+└── lib/              # utils (cn), provider (localStorage helpers)
+```
+
+## טכנולוגיות
+
+- **Vite + React 19 + TypeScript**
+- **Tailwind CSS 3** (Hebrew RTL, theme: cream / ink / wine / gold / stone)
+- **React Router 7** (BrowserRouter, nested routes)
+- **Framer Motion** (page transitions, scroll-in animations)
+- **Recharts** (Earnings BarChart)
+- **lucide-react** (icons)
+
+## פונטים
+
+- **Heebo** (sans, ממשק)
+- **Cormorant Garamond** (serif, כותרות editorial)
