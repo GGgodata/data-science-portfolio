@@ -39,7 +39,7 @@ export default function JobFilters({ filters, setFilters, matchCount }: JobFilte
   }
 
   return (
-    <div className="sticky top-16 z-20 bg-cream/95 backdrop-blur-md border-b border-stone/15 -mx-8 lg:-mx-12 px-8 lg:px-12 py-4 mb-6">
+    <div className="sticky top-16 z-20 bg-cream/95 backdrop-blur-md border-b border-stone/15 -mx-4 sm:-mx-8 lg:-mx-12 px-4 sm:px-8 lg:px-12 py-4 mb-6 overflow-x-auto">
       <div className="flex flex-wrap items-end gap-4">
         <div>
           <label className="block text-[10px] uppercase tracking-wider text-stone mb-1">
