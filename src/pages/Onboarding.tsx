@@ -14,6 +14,9 @@ import Step10Days from '../components/onboarding/steps/Step10Days'
 import Step11Hours from '../components/onboarding/steps/Step11Hours'
 import Step12IDDoc from '../components/onboarding/steps/Step12IDDoc'
 import Step13Certs from '../components/onboarding/steps/Step13Certs'
+import Step14Photo from '../components/onboarding/steps/Step14Photo'
+import Step15Bio from '../components/onboarding/steps/Step15Bio'
+import Step16Summary from '../components/onboarding/steps/Step16Summary'
 
 function isStepValid(step: number, data: OnboardingData): boolean {
   switch (step) {
@@ -46,6 +49,12 @@ function isStepValid(step: number, data: OnboardingData): boolean {
     case 12:
       return !!data.idDocument
     case 13:
+      return true
+    case 14:
+      return !!data.profilePhoto
+    case 15:
+      return !!data.bio && data.bio.trim().length >= 10
+    case 16:
       return true
     default:
       return false
@@ -80,6 +89,12 @@ function renderStep(step: number) {
       return <Step12IDDoc key={12} />
     case 13:
       return <Step13Certs key={13} />
+    case 14:
+      return <Step14Photo key={14} />
+    case 15:
+      return <Step15Bio key={15} />
+    case 16:
+      return <Step16Summary key={16} />
     default:
       return null
   }

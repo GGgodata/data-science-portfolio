@@ -11,8 +11,9 @@ type OnboardingLayoutProps = {
 }
 
 export default function OnboardingLayout({ children, isValid, onNext }: OnboardingLayoutProps) {
-  const { step, next, prev } = useOnboarding()
+  const { step, next, prev, totalSteps } = useOnboarding()
   const navigate = useNavigate()
+  const isLast = step === totalSteps
 
   const handlePrev = () => {
     if (step === 1) {
@@ -43,14 +44,16 @@ export default function OnboardingLayout({ children, isValid, onNext }: Onboardi
             <ArrowRight size={18} />
             הקודם
           </button>
-          <button
-            onClick={handleNext}
-            disabled={!isValid}
-            className="flex items-center gap-2 bg-wine text-cream px-7 py-3 rounded-full text-sm font-medium hover:bg-wine/90 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
-          >
-            המשך
-            <ArrowLeft size={18} />
-          </button>
+          {!isLast && (
+            <button
+              onClick={handleNext}
+              disabled={!isValid}
+              className="flex items-center gap-2 bg-wine text-cream px-7 py-3 rounded-full text-sm font-medium hover:bg-wine/90 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+            >
+              המשך
+              <ArrowLeft size={18} />
+            </button>
+          )}
         </div>
       </footer>
     </div>

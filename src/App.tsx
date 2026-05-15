@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Layout from './components/shared/Layout'
 import Landing from './pages/Landing'
 import Onboarding from './pages/Onboarding'
+import OnboardingSuccess from './pages/OnboardingSuccess'
 import DashboardHome from './pages/dashboard/Home'
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
           }
         />
         <Route path="/providers/onboarding" element={<Onboarding />} />
+        <Route path="/providers/onboarding/success" element={<OnboardingSuccess />} />
         <Route path="/providers/dashboard" element={<DashboardHome />} />
       </Routes>
     </BrowserRouter>
