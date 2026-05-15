@@ -9,6 +9,11 @@ import Step05Categories from '../components/onboarding/steps/Step05Categories'
 import Step06SubCategories, { isStep06Valid } from '../components/onboarding/steps/Step06SubCategories'
 import Step07Experience from '../components/onboarding/steps/Step07Experience'
 import Step08Rate from '../components/onboarding/steps/Step08Rate'
+import Step09Areas from '../components/onboarding/steps/Step09Areas'
+import Step10Days from '../components/onboarding/steps/Step10Days'
+import Step11Hours from '../components/onboarding/steps/Step11Hours'
+import Step12IDDoc from '../components/onboarding/steps/Step12IDDoc'
+import Step13Certs from '../components/onboarding/steps/Step13Certs'
 
 function isStepValid(step: number, data: OnboardingData): boolean {
   switch (step) {
@@ -32,6 +37,16 @@ function isStepValid(step: number, data: OnboardingData): boolean {
       return !!data.yearsOfExperience
     case 8:
       return typeof data.hourlyRate === 'number' && data.hourlyRate >= 50
+    case 9:
+      return data.nearbyOnly || (!!data.serviceAreas && data.serviceAreas.length > 0)
+    case 10:
+      return !!data.availableDays && data.availableDays.length > 0
+    case 11:
+      return !!data.availableHours?.from && !!data.availableHours?.to
+    case 12:
+      return !!data.idDocument
+    case 13:
+      return true
     default:
       return false
   }
@@ -55,6 +70,16 @@ function renderStep(step: number) {
       return <Step07Experience key={7} />
     case 8:
       return <Step08Rate key={8} />
+    case 9:
+      return <Step09Areas key={9} />
+    case 10:
+      return <Step10Days key={10} />
+    case 11:
+      return <Step11Hours key={11} />
+    case 12:
+      return <Step12IDDoc key={12} />
+    case 13:
+      return <Step13Certs key={13} />
     default:
       return null
   }
