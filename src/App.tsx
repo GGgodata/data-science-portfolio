@@ -1,6 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-
-const BASE_NAME = import.meta.env.BASE_URL.replace(/\/$/, '') || undefined
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Layout from './components/shared/Layout'
 import Landing from './pages/Landing'
 import Onboarding from './pages/Onboarding'
@@ -16,7 +14,7 @@ import Profile from './pages/dashboard/Profile'
 
 export default function App() {
   return (
-    <BrowserRouter basename={BASE_NAME}>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Navigate to="/providers/join" replace />} />
         <Route
@@ -39,6 +37,6 @@ export default function App() {
           <Route path="profile" element={<Profile />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
