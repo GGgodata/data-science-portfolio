@@ -4,9 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="המדריך להפסקת גלולות בלי לפחד מהעור. פרוטוקול 3 שלבים — לפני, במהלך ואחרי ההפסקה — שמכין את הגוף, מאזן הורמונים ומונע התפרצות אקנה. מאת לינוי קליניק." />
-<meta name="theme-color" content="#6b4a55" />
+<meta name="theme-color" content="#2f4a3d" />
 
-<!-- Open Graph / שיתוף -->
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="he_IL" />
 <meta property="og:title" content="להפסיק גלולות בלי לפחד מהעור | לינוי קליניק" />
@@ -14,33 +13,40 @@
 
 <title>להפסיק גלולות בלי לפחד מהעור | לינוי קליניק</title>
 
+<!-- מסמן שיש JS — כדי שאנימציות החשיפה לא יסתירו תוכן אם משהו נכשל -->
+<script>document.documentElement.className += ' js';</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Frank+Ruhl+Libre:wght@500;700;900&display=swap" rel="stylesheet" />
 
 <style>
 /* =========================================================
-   הגדרות גלובליות / משתני עיצוב
-   ערכים שקל לשנות מסומנים בהערות.
+   פלטת צבעים — גישה טבעית/וולנס לעור והורמונים
+   ירוק מרווה · טרהקוטה/אפרסק · קרם
    ========================================================= */
 :root{
-  --cream:#fbf6f2;
-  --cream-2:#f4e9e2;
-  --blush:#e7c4bd;
-  --blush-soft:#f3dcd6;
-  --rose:#c98a86;
-  --plum:#6b4a55;       /* צבע מותג ראשי */
-  --plum-deep:#4d333c;
-  --gold:#c9a36b;
-  --ink:#3a2e2e;
-  --ink-soft:#6b5d5d;
-  --white:#ffffff;
+  --cream:#f7f2ea;
+  --cream-2:#efe5d6;
+  --sand:#e8dac4;
+  --peach:#f0c3a9;
+  --peach-soft:#f8e3d3;
+  --clay:#d4795a;       /* אקסנט / CTA */
+  --clay-deep:#b9603f;
+  --sage:#8ba894;
+  --sage-soft:#dde8de;
+  --forest:#2f4a3d;     /* מותג ראשי / כותרות */
+  --forest-deep:#21372d;
+  --gold:#c79a5b;
+  --ink:#2c332d;
+  --ink-soft:#5f6a60;
+  --white:#fffdf9;
   --green:#5b8a72;
-  --radius:22px;
-  --radius-sm:14px;
-  --shadow-sm:0 4px 18px rgba(77,51,60,.08);
-  --shadow:0 18px 50px rgba(77,51,60,.14);
-  --shadow-lg:0 30px 80px rgba(77,51,60,.20);
+  --radius:24px;
+  --radius-sm:15px;
+  --shadow-sm:0 4px 18px rgba(33,55,45,.08);
+  --shadow:0 18px 50px rgba(33,55,45,.13);
+  --shadow-lg:0 30px 80px rgba(33,55,45,.20);
   --maxw:1140px;
 }
 
@@ -48,26 +54,22 @@
 html{scroll-behavior:smooth}
 body{
   font-family:'Heebo',system-ui,-apple-system,'Segoe UI',sans-serif;
-  color:var(--ink);
-  background:var(--cream);
-  line-height:1.7;
-  font-size:18px;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
+  color:var(--ink);background:var(--cream);line-height:1.7;font-size:18px;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
 }
-h1,h2,h3{font-family:'Frank Ruhl Libre','Heebo',serif;line-height:1.2;color:var(--plum-deep);font-weight:700}
+h1,h2,h3{font-family:'Frank Ruhl Libre','Heebo',serif;line-height:1.18;color:var(--forest-deep);font-weight:700}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
 .eyebrow{
   display:inline-block;font-family:'Heebo';font-weight:700;letter-spacing:.14em;
-  font-size:.78rem;text-transform:uppercase;color:var(--rose);
-  background:var(--blush-soft);padding:7px 16px;border-radius:999px;margin-bottom:18px;
+  font-size:.78rem;text-transform:uppercase;color:var(--clay-deep);
+  background:var(--peach-soft);padding:7px 16px;border-radius:999px;margin-bottom:18px;
 }
 .center{text-align:center}
 .muted{color:var(--ink-soft)}
 
-/* ============ כפתורים ============ */
+/* כפתורים */
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:10px;
   font-family:'Heebo';font-weight:700;font-size:1.08rem;
@@ -75,91 +77,60 @@ img{max-width:100%;display:block}
   transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
   text-align:center;line-height:1.2;
 }
-.btn-primary{
-  background:linear-gradient(135deg,var(--rose),var(--plum));
-  color:#fff;box-shadow:0 14px 30px rgba(107,74,85,.35);
-}
-.btn-primary:hover{transform:translateY(-3px);box-shadow:0 20px 40px rgba(107,74,85,.45)}
+.btn-primary{background:linear-gradient(135deg,var(--clay),var(--clay-deep));color:#fff;box-shadow:0 14px 30px rgba(185,96,63,.32)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 20px 40px rgba(185,96,63,.42)}
 .btn-wa{background:#25D366;color:#fff;box-shadow:0 12px 26px rgba(37,211,102,.35)}
 .btn-wa:hover{transform:translateY(-3px)}
+.btn-ghost{background:transparent;color:var(--forest);border:2px solid var(--sage)}
+.btn-ghost:hover{background:var(--sage-soft)}
 .btn-lg{font-size:1.18rem;padding:21px 44px}
 .btn-block{display:flex;width:100%}
-.btn .sub{font-weight:400;font-size:.78rem;opacity:.9;display:block}
+.btn .sub{font-weight:400;font-size:.78rem;opacity:.92;display:block}
 
-/* ============ סרגל הכרזה עליון ============ */
-.announce{
-  background:var(--plum-deep);color:#fff;text-align:center;
-  font-size:.92rem;font-weight:500;padding:10px 16px;letter-spacing:.01em;
-}
-.announce strong{color:var(--blush)}
+/* סרגל הכרזה */
+.announce{background:var(--forest-deep);color:#fff;text-align:center;font-size:.92rem;font-weight:500;padding:10px 16px}
+.announce strong{color:var(--peach)}
 
-/* ============ ניווט ============ */
-header.nav{
-  position:sticky;top:0;z-index:50;background:rgba(251,246,242,.86);
-  backdrop-filter:blur(12px);border-bottom:1px solid rgba(107,74,85,.08);
-}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;max-width:var(--maxw);margin:0 auto}
+/* ניווט */
+header.nav{position:sticky;top:0;z-index:50;background:rgba(247,242,234,.88);backdrop-filter:blur(12px);border-bottom:1px solid rgba(33,55,45,.08)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:13px 22px;max-width:var(--maxw);margin:0 auto}
 .brand{display:flex;align-items:center;gap:12px}
-.brand .logo{
-  width:46px;height:46px;border-radius:50%;
-  background:linear-gradient(135deg,var(--blush),var(--rose));
-  display:grid;place-items:center;color:#fff;font-family:'Frank Ruhl Libre';font-weight:900;font-size:1.3rem;
-  box-shadow:var(--shadow-sm);
-}
-.brand b{font-family:'Frank Ruhl Libre';font-size:1.15rem;color:var(--plum-deep);line-height:1.05}
+.brand .logo{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--sage),var(--forest));display:grid;place-items:center;color:#fff;font-family:'Frank Ruhl Libre';font-weight:900;font-size:1.3rem;box-shadow:var(--shadow-sm)}
+.brand b{font-family:'Frank Ruhl Libre';font-size:1.15rem;color:var(--forest-deep);line-height:1.05}
 .brand span{display:block;font-size:.72rem;color:var(--ink-soft);letter-spacing:.18em;font-weight:600}
 .nav-cta{display:flex;align-items:center;gap:14px}
 .nav-links{display:flex;gap:26px;font-size:.95rem;font-weight:500}
-.nav-links a:hover{color:var(--rose)}
+.nav-links a:hover{color:var(--clay)}
 .nav .btn{padding:12px 24px;font-size:.98rem}
-@media(max-width:860px){.nav-links{display:none}}
+@media(max-width:880px){.nav-links{display:none}}
 
-/* ============ HERO ============ */
-.hero{position:relative;padding:70px 0 60px;overflow:hidden}
-.hero::before{
-  content:"";position:absolute;inset:0;z-index:-1;
-  background:
-    radial-gradient(60% 50% at 85% 0%,var(--blush-soft) 0%,transparent 60%),
-    radial-gradient(50% 60% at 0% 100%,var(--cream-2) 0%,transparent 55%);
-}
+/* HERO */
+.hero{position:relative;padding:72px 0 64px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(58% 50% at 85% 0%,var(--peach-soft) 0%,transparent 60%),radial-gradient(52% 60% at 0% 100%,var(--sage-soft) 0%,transparent 55%)}
 .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center}
-.hero h1{font-size:clamp(2.1rem,5vw,3.4rem);font-weight:900;margin-bottom:20px}
-.hero h1 .hl{color:var(--rose);position:relative;white-space:nowrap}
+.hero h1{font-size:clamp(2.1rem,5vw,3.5rem);font-weight:900;margin-bottom:20px}
+.hero h1 .hl{color:var(--clay);white-space:nowrap}
 .hero .lead{font-size:1.2rem;color:var(--ink-soft);margin-bottom:26px;max-width:560px}
 .hero-points{list-style:none;margin:0 0 30px;display:grid;gap:12px}
 .hero-points li{display:flex;align-items:flex-start;gap:12px;font-weight:500;font-size:1.02rem}
-.hero-points .ic{flex:0 0 26px;width:26px;height:26px;border-radius:50%;background:var(--blush-soft);color:var(--plum);display:grid;place-items:center;font-weight:800;margin-top:3px}
+.hero-points .ic{flex:0 0 26px;width:26px;height:26px;border-radius:50%;background:var(--sage-soft);color:var(--forest);display:grid;place-items:center;font-weight:800;margin-top:3px}
 .hero-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
 .hero-reassure{margin-top:18px;font-size:.92rem;color:var(--ink-soft);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.hero-reassure b{color:var(--plum)}
+.hero-reassure b{color:var(--forest)}
 
-/* ===== מוקאפ עטיפת המדריך ===== */
+/* מוקאפ עטיפה */
 .cover-stage{position:relative;display:grid;place-items:center;perspective:1400px}
-.cover{
-  position:relative;width:330px;max-width:78vw;aspect-ratio:3/4.1;border-radius:8px 16px 16px 8px;
-  background:linear-gradient(150deg,#fff 0%,#fdf2ee 55%,#f6e2db 100%);
-  box-shadow:var(--shadow-lg);transform:rotateY(-14deg) rotateX(3deg) rotate(-2deg);
-  padding:34px 30px;display:flex;flex-direction:column;
-  border:1px solid rgba(255,255,255,.7);
-}
-.cover::after{content:"";position:absolute;top:0;bottom:0;right:0;width:14px;border-radius:8px 0 0 8px;background:linear-gradient(180deg,var(--rose),var(--plum));opacity:.85}
-.cover .c-brand{font-size:.7rem;letter-spacing:.28em;color:var(--rose);font-weight:700;text-transform:uppercase;margin-bottom:auto}
+.cover{position:relative;width:330px;max-width:78vw;aspect-ratio:3/4.1;border-radius:8px 16px 16px 8px;background:linear-gradient(155deg,#fffdf9 0%,#f7ece1 55%,#eddfcb 100%);box-shadow:var(--shadow-lg);transform:rotateY(-14deg) rotateX(3deg) rotate(-2deg);padding:34px 30px;display:flex;flex-direction:column;border:1px solid rgba(255,255,255,.7)}
+.cover::after{content:"";position:absolute;top:0;bottom:0;right:0;width:14px;border-radius:8px 0 0 8px;background:linear-gradient(180deg,var(--sage),var(--forest));opacity:.9}
+.cover .c-brand{font-size:.7rem;letter-spacing:.28em;color:var(--clay);font-weight:700;text-transform:uppercase;margin-bottom:auto}
 .cover .c-kicker{font-size:.78rem;color:var(--gold);font-weight:700;letter-spacing:.08em;margin-bottom:8px}
-.cover h3{font-family:'Frank Ruhl Libre';font-size:1.95rem;font-weight:900;color:var(--plum-deep);line-height:1.12}
+.cover h3{font-family:'Frank Ruhl Libre';font-size:1.95rem;font-weight:900;color:var(--forest-deep);line-height:1.12}
 .cover .c-sub{font-size:.92rem;color:var(--ink-soft);margin-top:12px;line-height:1.5}
 .cover .c-foot{margin-top:auto;font-size:.72rem;color:var(--ink-soft);letter-spacing:.04em;display:flex;justify-content:space-between;align-items:center}
-.cover-badge{
-  position:absolute;left:-14px;bottom:26px;z-index:3;
-  background:var(--plum);color:#fff;border-radius:50%;width:104px;height:104px;
-  display:grid;place-content:center;text-align:center;line-height:1.1;
-  box-shadow:var(--shadow);transform:rotate(-8deg);border:3px solid #fff;
-}
+.cover-badge{position:absolute;left:-14px;bottom:26px;z-index:3;background:var(--forest);color:#fff;border-radius:50%;width:104px;height:104px;display:grid;place-content:center;text-align:center;line-height:1.1;box-shadow:var(--shadow);transform:rotate(-8deg);border:3px solid #fff}
 .cover-badge b{font-size:1.7rem;display:block;font-family:'Frank Ruhl Libre'}
 .cover-badge span{font-size:.66rem;letter-spacing:.06em}
-.float-tag{
-  position:absolute;background:#fff;border-radius:14px;box-shadow:var(--shadow);
-  padding:10px 14px;font-size:.82rem;font-weight:600;display:flex;align-items:center;gap:8px;
-}
+.float-tag{position:absolute;background:#fff;border-radius:14px;box-shadow:var(--shadow);padding:10px 14px;font-size:.82rem;font-weight:600;display:flex;align-items:center;gap:8px}
 .float-tag .dot{width:10px;height:10px;border-radius:50%;background:var(--green)}
 .float-tag.t1{top:6px;right:-6px}
 .float-tag.t2{bottom:-10px;left:30px}
@@ -167,73 +138,76 @@ header.nav{
   .hero-grid{grid-template-columns:1fr;gap:44px;text-align:center}
   .hero .lead{margin-inline:auto}
   .hero-points{max-width:430px;margin-inline:auto;text-align:right}
-  .hero-actions{justify-content:center}
-  .hero-reassure{justify-content:center}
+  .hero-actions,.hero-reassure{justify-content:center}
   .cover{transform:rotateY(-8deg) rotate(-2deg)}
 }
 
-/* ============ פס לוגואים / אמון ============ */
-.trustbar{background:var(--white);border-block:1px solid rgba(107,74,85,.07)}
-.trustbar .wrap{display:flex;flex-wrap:wrap;gap:20px 44px;justify-content:center;align-items:center;padding:22px}
+/* פס אמון + מיני-נתונים */
+.trustbar{background:var(--white);border-block:1px solid rgba(33,55,45,.07)}
+.trustbar .wrap{display:flex;flex-wrap:wrap;gap:16px 40px;justify-content:center;align-items:center;padding:24px}
 .trust-item{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--ink-soft);font-size:.96rem}
-.trust-item .ic{color:var(--rose);font-size:1.25rem}
+.trust-item .ic{color:var(--clay);font-size:1.25rem}
+.trust-item b{color:var(--forest-deep);font-family:'Frank Ruhl Libre';font-size:1.3rem;margin-inline-end:2px}
 
-/* ============ סקשנים כלליים ============ */
-section{padding:80px 0}
-.sec-head{max-width:720px;margin:0 auto 54px;text-align:center}
+/* סקשנים */
+section{padding:82px 0}
+.sec-head{max-width:730px;margin:0 auto 54px;text-align:center}
 .sec-head h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:16px}
 .sec-head p{font-size:1.12rem;color:var(--ink-soft)}
 
-/* ============ "מדבר אלייך?" ============ */
+/* מדבר אלייך */
 .pain{background:var(--white)}
 .pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:920px;margin:0 auto}
-.pain-card{
-  background:var(--cream);border-radius:var(--radius-sm);padding:24px 26px;
-  border:1px solid rgba(107,74,85,.07);display:flex;gap:14px;align-items:flex-start;
-}
-.pain-card .q{flex:0 0 40px;width:40px;height:40px;border-radius:12px;background:var(--blush-soft);color:var(--plum);display:grid;place-items:center;font-size:1.4rem;font-weight:800}
+.pain-card{background:var(--cream);border-radius:var(--radius-sm);padding:24px 26px;border:1px solid rgba(33,55,45,.07);display:flex;gap:14px;align-items:flex-start}
+.pain-card .q{flex:0 0 40px;width:40px;height:40px;border-radius:12px;background:var(--peach-soft);color:var(--clay-deep);display:grid;place-items:center;font-size:1.4rem;font-weight:800}
 .pain-card p{font-size:1.02rem;font-weight:500;line-height:1.55}
-.pain-foot{text-align:center;margin-top:40px;font-size:1.15rem;font-weight:600;color:var(--plum-deep)}
+.pain-foot{text-align:center;margin-top:40px;font-size:1.18rem;font-weight:600;color:var(--forest-deep)}
+.pain-foot b{color:var(--clay)}
 @media(max-width:680px){.pain-grid{grid-template-columns:1fr}}
 
-/* ============ האמת / תובנת מפתח ============ */
-.truth{background:linear-gradient(160deg,var(--plum) 0%,var(--plum-deep) 100%);color:#fff;position:relative;overflow:hidden}
-.truth::before{content:"";position:absolute;width:480px;height:480px;border-radius:50%;background:rgba(231,196,189,.12);top:-160px;left:-120px}
+/* האמת */
+.truth{background:linear-gradient(160deg,var(--forest) 0%,var(--forest-deep) 100%);color:#fff;position:relative;overflow:hidden}
+.truth::before{content:"";position:absolute;width:480px;height:480px;border-radius:50%;background:rgba(240,195,169,.12);top:-160px;left:-120px}
 .truth .wrap{position:relative;max-width:860px;text-align:center}
 .truth h2{color:#fff;font-size:clamp(1.9rem,4.4vw,2.8rem);margin-bottom:24px}
-.truth h2 em{color:var(--blush);font-style:normal}
+.truth h2 em{color:var(--peach);font-style:normal}
 .truth p{font-size:1.18rem;color:rgba(255,255,255,.86);margin-bottom:18px}
 .truth .pull{font-family:'Frank Ruhl Libre';font-size:1.5rem;color:#fff;font-weight:700;margin:30px auto 0;max-width:680px;line-height:1.4}
-.truth .pull b{color:var(--blush)}
+.truth .pull b{color:var(--peach)}
 
-/* ============ ביולוגיה / מדע ============ */
+/* ביולוגיה */
 .bio-grid{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:center}
 .bio-copy h2{font-size:clamp(1.8rem,4vw,2.5rem);margin-bottom:20px}
 .bio-copy p{margin-bottom:16px;color:var(--ink-soft);font-size:1.08rem}
-.bio-copy strong{color:var(--plum-deep)}
+.bio-copy strong{color:var(--forest-deep)}
 .bio-cards{display:grid;gap:16px}
-.bio-card{background:var(--white);border-radius:var(--radius-sm);padding:22px 24px;box-shadow:var(--shadow-sm);border-right:4px solid var(--rose)}
-.bio-card h4{font-family:'Heebo';font-weight:700;font-size:1.08rem;color:var(--plum-deep);margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.bio-card{background:var(--white);border-radius:var(--radius-sm);padding:22px 24px;box-shadow:var(--shadow-sm);border-right:4px solid var(--clay)}
+.bio-card h4{font-family:'Heebo';font-weight:700;font-size:1.08rem;color:var(--forest-deep);margin-bottom:6px;display:flex;align-items:center;gap:10px}
 .bio-card p{margin:0;font-size:.98rem;color:var(--ink-soft)}
 .bio-card .emoji{font-size:1.3rem}
 @media(max-width:820px){.bio-grid{grid-template-columns:1fr;gap:32px}}
 
-/* ============ מה תקבלי / 3 שלבים ============ */
+/* ציר זמן המסע */
+.journey{background:var(--sage-soft)}
+.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:0;max-width:980px;margin:0 auto;position:relative}
+.timeline::before{content:"";position:absolute;top:34px;right:8%;left:8%;height:3px;background:repeating-linear-gradient(90deg,var(--sage) 0 14px,transparent 14px 26px)}
+.tl-step{text-align:center;padding:0 16px;position:relative}
+.tl-dot{width:70px;height:70px;border-radius:50%;background:#fff;border:3px solid var(--sage);color:var(--forest);display:grid;place-items:center;margin:0 auto 18px;font-size:1.8rem;box-shadow:var(--shadow-sm);position:relative;z-index:1}
+.tl-step h4{font-family:'Frank Ruhl Libre';font-size:1.25rem;color:var(--forest-deep);margin-bottom:4px}
+.tl-when{font-size:.82rem;font-weight:700;letter-spacing:.04em;color:var(--clay);text-transform:uppercase;margin-bottom:10px}
+.tl-step p{font-size:.96rem;color:var(--ink-soft)}
+@media(max-width:760px){
+  .timeline{grid-template-columns:1fr;gap:30px}
+  .timeline::before{display:none}
+}
+
+/* 3 שלבים */
 .steps{background:var(--cream-2)}
 .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.step{
-  background:var(--white);border-radius:var(--radius);padding:34px 28px;
-  box-shadow:var(--shadow-sm);position:relative;transition:transform .2s,box-shadow .2s;
-  border-top:5px solid var(--blush);
-}
+.step{background:var(--white);border-radius:var(--radius);padding:34px 28px;box-shadow:var(--shadow-sm);position:relative;transition:transform .2s,box-shadow .2s;border-top:5px solid var(--sage)}
 .step:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
-.step .num{
-  position:absolute;top:-22px;right:26px;width:50px;height:50px;border-radius:14px;
-  background:linear-gradient(135deg,var(--rose),var(--plum));color:#fff;
-  display:grid;place-items:center;font-family:'Frank Ruhl Libre';font-weight:900;font-size:1.5rem;
-  box-shadow:var(--shadow-sm);
-}
-.step .when{font-size:.8rem;font-weight:700;letter-spacing:.06em;color:var(--rose);text-transform:uppercase;margin:14px 0 6px}
+.step .num{position:absolute;top:-22px;right:26px;width:50px;height:50px;border-radius:14px;background:linear-gradient(135deg,var(--clay),var(--clay-deep));color:#fff;display:grid;place-items:center;font-family:'Frank Ruhl Libre';font-weight:900;font-size:1.5rem;box-shadow:var(--shadow-sm)}
+.step .when{font-size:.8rem;font-weight:700;letter-spacing:.06em;color:var(--clay);text-transform:uppercase;margin:14px 0 6px}
 .step h3{font-size:1.4rem;margin-bottom:14px}
 .step ul{list-style:none;display:grid;gap:11px}
 .step li{display:flex;gap:10px;align-items:flex-start;font-size:.98rem;color:var(--ink-soft)}
@@ -241,20 +215,19 @@ section{padding:80px 0}
 .step li b{color:var(--ink)}
 @media(max-width:820px){.steps-grid{grid-template-columns:1fr;gap:34px}}
 
-/* ============ כלים פרקטיים / value stack ============ */
+/* כלים פרקטיים */
 .includes{background:var(--white)}
 .inc-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center}
 .inc-list{list-style:none;display:grid;gap:16px}
-.inc-list li{display:flex;gap:16px;align-items:flex-start;background:var(--cream);border-radius:var(--radius-sm);padding:18px 20px;border:1px solid rgba(107,74,85,.06)}
-.inc-list .ic{flex:0 0 46px;width:46px;height:46px;border-radius:12px;background:var(--blush-soft);display:grid;place-items:center;font-size:1.4rem}
-.inc-list h4{font-family:'Heebo';font-weight:700;font-size:1.06rem;color:var(--plum-deep);margin-bottom:3px}
+.inc-list li{display:flex;gap:16px;align-items:flex-start;background:var(--cream);border-radius:var(--radius-sm);padding:18px 20px;border:1px solid rgba(33,55,45,.06)}
+.inc-list .ic{flex:0 0 46px;width:46px;height:46px;border-radius:12px;background:var(--sage-soft);display:grid;place-items:center;font-size:1.4rem}
+.inc-list h4{font-family:'Heebo';font-weight:700;font-size:1.06rem;color:var(--forest-deep);margin-bottom:3px}
 .inc-list p{font-size:.94rem;color:var(--ink-soft);margin:0}
-/* צלחת מאוזנת */
-.plate-card{background:linear-gradient(160deg,var(--blush-soft),var(--cream));border-radius:var(--radius);padding:34px;box-shadow:var(--shadow-sm);text-align:center}
+.plate-card{background:linear-gradient(160deg,var(--sage-soft),var(--cream));border-radius:var(--radius);padding:34px;box-shadow:var(--shadow-sm);text-align:center}
 .plate{width:210px;height:210px;border-radius:50%;margin:18px auto 24px;position:relative;box-shadow:inset 0 0 0 10px #fff,var(--shadow);overflow:hidden;display:flex}
 .plate .slice{flex:1;display:grid;place-items:center;color:#fff;font-weight:700;font-size:.9rem;text-align:center;padding:6px}
-.plate .s1{background:var(--rose)}
-.plate .s2{background:var(--plum)}
+.plate .s1{background:var(--clay)}
+.plate .s2{background:var(--forest)}
 .plate .s3{background:var(--green)}
 .plate-card h3{font-size:1.4rem;margin-bottom:6px}
 .plate-legend{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;font-size:.9rem;font-weight:600;color:var(--ink-soft)}
@@ -262,23 +235,38 @@ section{padding:80px 0}
 .plate-legend i{width:12px;height:12px;border-radius:4px;display:inline-block}
 @media(max-width:820px){.inc-grid{grid-template-columns:1fr;gap:34px}}
 
-/* ============ קופסת המחיר / ההצעה ============ */
-.offer{background:linear-gradient(160deg,var(--cream-2),var(--cream));position:relative}
-.offer-box{
-  max-width:680px;margin:0 auto;background:#fff;border-radius:28px;
-  box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid rgba(201,138,134,.25);
-}
-.offer-top{background:linear-gradient(135deg,var(--rose),var(--plum));color:#fff;text-align:center;padding:30px 28px}
+/* השוואה עם/בלי */
+.compare{background:var(--cream-2)}
+.cmp-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:920px;margin:0 auto}
+.cmp{border-radius:var(--radius);padding:32px 30px;box-shadow:var(--shadow-sm)}
+.cmp h3{font-size:1.4rem;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.cmp ul{list-style:none;display:grid;gap:13px}
+.cmp li{display:flex;gap:11px;align-items:flex-start;font-size:1rem}
+.cmp .mk{flex:0 0 24px;font-weight:800;margin-top:1px}
+.cmp-no{background:#fff;border:1px solid rgba(33,55,45,.08)}
+.cmp-no h3{color:var(--ink-soft)}
+.cmp-no .mk{color:var(--clay-deep)}
+.cmp-no li{color:var(--ink-soft)}
+.cmp-yes{background:linear-gradient(160deg,var(--forest),var(--forest-deep));color:#fff}
+.cmp-yes h3{color:#fff}
+.cmp-yes .mk{color:var(--peach)}
+.cmp-yes li{color:rgba(255,255,255,.9)}
+@media(max-width:680px){.cmp-grid{grid-template-columns:1fr}}
+
+/* הצעה / מחיר */
+.offer{background:linear-gradient(160deg,var(--sage-soft),var(--cream));position:relative}
+.offer-box{max-width:680px;margin:0 auto;background:#fff;border-radius:28px;box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid rgba(212,121,90,.25)}
+.offer-top{background:linear-gradient(135deg,var(--clay),var(--clay-deep));color:#fff;text-align:center;padding:30px 28px}
 .offer-top .ribbon{display:inline-block;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);padding:5px 16px;border-radius:999px;font-size:.82rem;font-weight:700;letter-spacing:.05em;margin-bottom:14px}
-.offer-top h3{color:#fff;font-size:1.7rem;margin-bottom:6px}
-.offer-top p{opacity:.92;font-size:1rem}
+.offer-top h3{color:#fff;font-size:1.65rem;margin-bottom:6px}
+.offer-top p{opacity:.93;font-size:1rem}
 .offer-body{padding:34px 34px 38px}
 .price-row{display:flex;align-items:baseline;justify-content:center;gap:14px;margin-bottom:6px}
 .price-old{font-size:1.4rem;color:var(--ink-soft);text-decoration:line-through;opacity:.7}
-.price-now{font-family:'Frank Ruhl Libre';font-size:3.4rem;font-weight:900;color:var(--plum-deep)}
+.price-now{font-family:'Frank Ruhl Libre';font-size:3.4rem;font-weight:900;color:var(--forest-deep)}
 .price-now small{font-size:1.3rem}
-.price-note{text-align:center;color:var(--rose);font-weight:700;margin-bottom:22px;font-size:.95rem}
-.offer-list{list-style:none;display:grid;gap:11px;margin:0 auto 26px;max-width:460px}
+.price-note{text-align:center;color:var(--clay);font-weight:700;margin-bottom:22px;font-size:.95rem}
+.offer-list{list-style:none;display:grid;gap:11px;margin:0 auto 26px;max-width:470px}
 .offer-list li{display:flex;gap:11px;align-items:flex-start;font-size:1rem}
 .offer-list .ck{color:var(--green);font-weight:800;flex:0 0 22px;margin-top:2px}
 .offer-guarantee{display:flex;align-items:center;gap:14px;justify-content:center;background:var(--cream);border-radius:var(--radius-sm);padding:16px 20px;margin-top:22px;font-size:.92rem;color:var(--ink-soft)}
@@ -286,122 +274,113 @@ section{padding:80px 0}
 .offer-mini{text-align:center;margin-top:16px;font-size:.86rem;color:var(--ink-soft);display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
 .offer-mini span{display:flex;align-items:center;gap:6px}
 
-/* ============ דגלים אדומים ============ */
-.flags{background:var(--white)}
+/* תוצאות */
+.outcomes{background:var(--white)}
+.out-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.out-card{background:var(--cream);border-radius:var(--radius);padding:30px 26px;text-align:center;border:1px solid rgba(33,55,45,.06)}
+.out-card .ic{width:62px;height:62px;border-radius:50%;background:var(--sage-soft);display:grid;place-items:center;font-size:1.7rem;margin:0 auto 16px}
+.out-card h4{font-family:'Frank Ruhl Libre';font-size:1.2rem;color:var(--forest-deep);margin-bottom:8px}
+.out-card p{font-size:.96rem;color:var(--ink-soft)}
+@media(max-width:820px){.out-grid{grid-template-columns:1fr}}
+
+/* דגלים אדומים */
+.flags{background:var(--cream-2)}
 .flags-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:920px;margin:0 auto 36px}
-.flag{display:flex;gap:14px;align-items:flex-start;background:#fdf3f1;border:1px solid rgba(201,138,134,.3);border-radius:var(--radius-sm);padding:20px 22px}
+.flag{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid rgba(212,121,90,.3);border-radius:var(--radius-sm);padding:20px 22px}
 .flag .ic{flex:0 0 30px;font-size:1.4rem}
 .flag p{font-size:1rem;font-weight:500;margin:0}
 .flags-note{max-width:760px;margin:0 auto;text-align:center;font-size:1.05rem;color:var(--ink-soft)}
-.flags-note b{color:var(--plum-deep)}
+.flags-note b{color:var(--forest-deep)}
 @media(max-width:680px){.flags-grid{grid-template-columns:1fr}}
 
-/* ============ אודות לינוי ============ */
-.about{background:var(--cream-2)}
+/* אודות */
+.about{background:var(--white)}
 .about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:46px;align-items:center}
-.about-photo{
-  aspect-ratio:1/1.1;border-radius:var(--radius);background:
-    radial-gradient(circle at 30% 25%,var(--blush) 0,transparent 55%),
-    linear-gradient(150deg,var(--blush-soft),var(--rose));
-  display:grid;place-items:center;box-shadow:var(--shadow);position:relative;overflow:hidden;
-}
-.about-photo .mono{font-family:'Frank Ruhl Libre';font-size:6rem;color:#fff;font-weight:900;opacity:.92}
-.about-photo .cap{position:absolute;bottom:16px;background:rgba(255,255,255,.9);border-radius:999px;padding:8px 20px;font-weight:700;color:var(--plum-deep);font-size:.95rem}
+.about-photo{aspect-ratio:1/1.1;border-radius:var(--radius);background:radial-gradient(circle at 30% 25%,var(--peach) 0,transparent 55%),linear-gradient(150deg,var(--sage-soft),var(--sage));display:grid;place-items:center;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.about-photo .mono{font-family:'Frank Ruhl Libre';font-size:6rem;color:#fff;font-weight:900;opacity:.95}
+.about-photo .cap{position:absolute;bottom:16px;background:rgba(255,255,255,.92);border-radius:999px;padding:8px 20px;font-weight:700;color:var(--forest-deep);font-size:.95rem}
 .about-copy h2{font-size:clamp(1.8rem,4vw,2.5rem);margin-bottom:18px}
 .about-copy p{color:var(--ink-soft);margin-bottom:16px;font-size:1.08rem}
-.about-copy .sign{font-family:'Frank Ruhl Libre';font-size:1.5rem;color:var(--plum);font-weight:700;margin-top:8px}
+.about-copy strong{color:var(--forest-deep)}
+.about-copy .sign{font-family:'Frank Ruhl Libre';font-size:1.5rem;color:var(--clay);font-weight:700;margin-top:8px}
 @media(max-width:820px){.about-grid{grid-template-columns:1fr;gap:30px}.about-photo{max-width:340px;margin:0 auto}}
 
-/* ============ עדויות ============ */
-.testi{background:var(--white)}
+/* עדויות */
+.testi{background:var(--sage-soft)}
 .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.testi-card{background:var(--cream);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:14px}
+.testi-card{background:#fff;border-radius:var(--radius);padding:28px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:14px}
 .stars{color:var(--gold);letter-spacing:3px;font-size:1.05rem}
 .testi-card p{font-size:1rem;color:var(--ink);line-height:1.6}
 .testi-who{display:flex;align-items:center;gap:12px;margin-top:auto}
-.testi-who .av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--blush),var(--rose));display:grid;place-items:center;color:#fff;font-weight:800}
-.testi-who b{display:block;font-size:.95rem;color:var(--plum-deep)}
+.testi-who .av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--peach),var(--clay));display:grid;place-items:center;color:#fff;font-weight:800}
+.testi-who b{display:block;font-size:.95rem;color:var(--forest-deep)}
 .testi-who span{font-size:.82rem;color:var(--ink-soft)}
 @media(max-width:820px){.testi-grid{grid-template-columns:1fr}}
 
-/* ============ FAQ ============ */
+/* FAQ */
 .faq{background:var(--cream)}
 .faq-list{max-width:780px;margin:0 auto;display:grid;gap:14px}
-.faq-item{background:#fff;border-radius:var(--radius-sm);box-shadow:var(--shadow-sm);overflow:hidden;border:1px solid rgba(107,74,85,.06)}
-.faq-q{width:100%;text-align:right;background:none;border:none;cursor:pointer;padding:22px 24px;font-family:'Heebo';font-weight:700;font-size:1.08rem;color:var(--plum-deep);display:flex;justify-content:space-between;align-items:center;gap:16px}
-.faq-q .pm{flex:0 0 28px;width:28px;height:28px;border-radius:50%;background:var(--blush-soft);color:var(--plum);display:grid;place-items:center;font-size:1.3rem;font-weight:700;transition:transform .25s}
+.faq-item{background:#fff;border-radius:var(--radius-sm);box-shadow:var(--shadow-sm);overflow:hidden;border:1px solid rgba(33,55,45,.06)}
+.faq-q{width:100%;text-align:right;background:none;border:none;cursor:pointer;padding:22px 24px;font-family:'Heebo';font-weight:700;font-size:1.08rem;color:var(--forest-deep);display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq-q .pm{flex:0 0 28px;width:28px;height:28px;border-radius:50%;background:var(--sage-soft);color:var(--forest);display:grid;place-items:center;font-size:1.3rem;font-weight:700;transition:transform .25s}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding:0 24px;color:var(--ink-soft)}
-.faq-item.open .faq-a{max-height:340px;padding:0 24px 22px}
+.faq-item.open .faq-a{max-height:360px;padding:0 24px 22px}
 .faq-item.open .pm{transform:rotate(45deg)}
 
-/* ============ CTA סופי ============ */
-.final{background:linear-gradient(160deg,var(--plum) 0%,var(--plum-deep) 100%);color:#fff;text-align:center;position:relative;overflow:hidden}
-.final::before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;background:rgba(231,196,189,.12);bottom:-200px;right:-140px}
+/* CTA סופי */
+.final{background:linear-gradient(160deg,var(--forest) 0%,var(--forest-deep) 100%);color:#fff;text-align:center;position:relative;overflow:hidden}
+.final::before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;background:rgba(240,195,169,.12);bottom:-200px;right:-140px}
 .final .wrap{position:relative;max-width:760px}
-.final .eyebrow{background:rgba(255,255,255,.15);color:var(--blush)}
+.final .eyebrow{background:rgba(255,255,255,.15);color:var(--peach)}
 .final h2{color:#fff;font-size:clamp(2rem,4.6vw,3rem);margin-bottom:18px}
 .final p{font-size:1.18rem;color:rgba(255,255,255,.88);margin-bottom:14px}
-.final .quote{font-family:'Frank Ruhl Libre';font-size:1.6rem;color:var(--blush);margin:6px auto 30px;font-weight:700}
-.final .btn-primary{background:#fff;color:var(--plum)}
+.final .quote{font-family:'Frank Ruhl Libre';font-size:1.6rem;color:var(--peach);margin:6px auto 30px;font-weight:700}
+.final .btn-primary{background:#fff;color:var(--clay-deep)}
 .final .btn-primary:hover{background:var(--cream)}
 .final-mini{margin-top:22px;font-size:.9rem;color:rgba(255,255,255,.75);display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
 .final-mini span{display:flex;align-items:center;gap:7px}
 
-/* ============ פוטר ============ */
-footer{background:var(--plum-deep);color:rgba(255,255,255,.78);padding:54px 0 28px;font-size:.95rem}
+/* פוטר */
+footer{background:var(--forest-deep);color:rgba(255,255,255,.78);padding:54px 0 28px;font-size:.95rem}
 .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;margin-bottom:34px}
 .foot-brand .brand b,.foot-brand .brand span{color:#fff}
 .foot-brand p{margin-top:14px;max-width:340px;color:rgba(255,255,255,.6)}
 footer h5{color:#fff;font-size:1rem;margin-bottom:14px;font-family:'Heebo';font-weight:700}
-footer a:hover{color:var(--blush)}
+footer a:hover{color:var(--peach)}
 .foot-contact li{list-style:none;margin-bottom:10px;display:flex;align-items:center;gap:10px}
 .foot-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:.84rem;color:rgba(255,255,255,.55)}
 .disclaimer{max-width:var(--maxw);margin:0 auto;padding:0 22px}
 .disclaimer .box{background:rgba(255,255,255,.06);border-radius:var(--radius-sm);padding:16px 20px;font-size:.84rem;color:rgba(255,255,255,.6);margin-bottom:26px;border:1px solid rgba(255,255,255,.08)}
 @media(max-width:760px){.foot-grid{grid-template-columns:1fr;gap:26px}}
 
-/* ============ סרגל רכישה צף (מובייל) ============ */
-.sticky-buy{
-  position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;
-  box-shadow:0 -8px 30px rgba(77,51,60,.18);padding:12px 16px;
-  display:none;align-items:center;justify-content:space-between;gap:12px;
-  border-top:1px solid rgba(107,74,85,.1);
-}
-.sticky-buy .p b{font-family:'Frank Ruhl Libre';font-size:1.5rem;color:var(--plum-deep)}
+/* סרגל רכישה צף */
+.sticky-buy{position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;box-shadow:0 -8px 30px rgba(33,55,45,.18);padding:12px 16px;display:none;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid rgba(33,55,45,.1)}
+.sticky-buy .p b{font-family:'Frank Ruhl Libre';font-size:1.5rem;color:var(--forest-deep)}
 .sticky-buy .p s{color:var(--ink-soft);font-size:.95rem;margin-inline-start:6px}
-.sticky-buy .p span{display:block;font-size:.72rem;color:var(--rose);font-weight:700}
+.sticky-buy .p span{display:block;font-size:.72rem;color:var(--clay);font-weight:700}
 .sticky-buy .btn{padding:14px 26px;font-size:1rem}
 @media(max-width:760px){.sticky-buy{display:flex}body{padding-bottom:78px}}
 
-/* ============ וואטסאפ צף ============ */
-.wa-float{
-  position:fixed;bottom:22px;left:22px;z-index:55;width:60px;height:60px;border-radius:50%;
-  background:#25D366;display:grid;place-items:center;box-shadow:0 10px 28px rgba(37,211,102,.5);
-  transition:transform .2s;
-}
+/* וואטסאפ צף */
+.wa-float{position:fixed;bottom:22px;left:22px;z-index:55;width:60px;height:60px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 10px 28px rgba(37,211,102,.5);transition:transform .2s}
 .wa-float:hover{transform:scale(1.08)}
 .wa-float svg{width:32px;height:32px;fill:#fff}
 @media(max-width:760px){.wa-float{bottom:90px;width:54px;height:54px}.wa-float svg{width:28px;height:28px}}
 
-/* ============ אנימציית חשיפה ============ */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
-.reveal.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+/* אנימציית חשיפה — פעילה רק כשיש JS, כך שבלי JS התוכן תמיד מוצג */
+.js .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.js .reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:none}}
 </style>
 </head>
 <body>
 
-<!-- ====== הגדרות קישורים (לעריכה קלה) ======
-     PURCHASE_URL  = קישור הרכישה / עמוד התשלום בפאנל
-     WHATSAPP_URL  = קישור הוואטסאפ של הקליניק
-     הקישורים מוזרקים אוטומטית לכל הכפתורים דרך הסקריפט בתחתית הדף. -->
+<!-- ====== הגדרת קישורים נמצאת בסקריפט בתחתית (CONFIG) ====== -->
 
-<!-- סרגל הכרזה -->
 <div class="announce">
   ✦ מבצע השקה — <strong>גישה מיידית למדריך הדיגיטלי</strong> מיד לאחר הרכישה ✦
 </div>
 
-<!-- ניווט -->
 <header class="nav">
   <div class="nav-inner">
     <a class="brand" href="#top" aria-label="לינוי קליניק">
@@ -422,7 +401,7 @@ footer a:hover{color:var(--blush)}
 
 <a id="top"></a>
 
-<!-- ====================== HERO ====================== -->
+<!-- ============ HERO ============ -->
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="hero-copy reveal">
@@ -431,7 +410,7 @@ footer a:hover{color:var(--blush)}
       <p class="lead">הפרוטוקול המלא שמכין את הגוף שלך — <b>לפני, במהלך ואחרי</b> הפסקת הגלולה — מאזן הורמונים, מרגיע דלקת, ומונע את התפרצות האקנה שאף אחת לא הזהירה אותך ממנה.</p>
       <ul class="hero-points">
         <li><span class="ic">✓</span><span>הנזק לעור <b>לא מתחיל ביום ההפסקה</b> — אלא שבועות לפני. כאן תדעי בדיוק מה לעשות מראש.</span></li>
-        <li><span class="ic">✓</span><span>שיטת <b>3 שלבים</b> ברורה, מבוססת ביולוגיה הורמונלית — לא דיאטות קיצוניות ולא טיפולים אגרסיביים.</span></li>
+        <li><span class="ic">✓</span><span>שיטת <b>3 שלבים</b> ברורה, מבוססת ביולוגיה הורמונלית — בלי דיאטות קיצוניות ובלי טיפולים אגרסיביים.</span></li>
         <li><span class="ic">✓</span><span>כלים פרקטיים: צ׳קליסט בדיקות דם, צלחת מאוזנת ויומן מעקב להדפסה.</span></li>
       </ul>
       <div class="hero-actions">
@@ -439,6 +418,7 @@ footer a:hover{color:var(--blush)}
           קבלי את המדריך עכשיו
           <span class="sub">גישה מיידית · קריאה מהנייד או הדפסה</span>
         </a>
+        <a class="btn btn-ghost" href="#steps">מה יש בפנים?</a>
       </div>
       <div class="hero-reassure">
         <span>✦ הורדה מיידית</span>•<span>✦ <b>מאת לינוי קליניק</b></span>•<span>✦ ליווי מקצועי זמין</span>
@@ -462,18 +442,18 @@ footer a:hover{color:var(--blush)}
   </div>
 </section>
 
-<!-- פס אמון -->
+<!-- ============ פס אמון ============ -->
 <div class="trustbar">
   <div class="wrap">
-    <div class="trust-item"><span class="ic">⚕️</span> גישה הורמונלית-עורית</div>
-    <div class="trust-item"><span class="ic">📋</span> פרוטוקול 3 שלבים</div>
-    <div class="trust-item"><span class="ic">🌿</span> תזונה אנטי-דלקתית</div>
+    <div class="trust-item"><b>3</b> שלבים — לפני · במהלך · אחרי</div>
+    <div class="trust-item"><span class="ic">🌿</span> מבוסס ביולוגיה הורמונלית</div>
     <div class="trust-item"><span class="ic">📲</span> גישה מיידית לכל מכשיר</div>
+    <div class="trust-item"><span class="ic">🖨️</span> כלים מודפסים מוכנים לשימוש</div>
     <div class="trust-item"><span class="ic">💬</span> ליווי אישי בהמשך</div>
   </div>
 </div>
 
-<!-- ====================== מדבר אלייך? ====================== -->
+<!-- ============ מדבר אלייך ============ -->
 <section class="pain" id="why">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -491,10 +471,10 @@ footer a:hover{color:var(--blush)}
   </div>
 </section>
 
-<!-- ====================== האמת ====================== -->
+<!-- ============ האמת ============ -->
 <section class="truth">
   <div class="wrap reveal">
-    <span class="eyebrow" style="background:rgba(255,255,255,.15);color:var(--blush)">מה שרוב הנשים לא יודעות</span>
+    <span class="eyebrow">מה שרוב הנשים לא יודעות</span>
     <h2>הנזק לעור <em>לא מתחיל</em> ביום ההפסקה</h2>
     <p>הוא מתחיל שבועות לפני — כשהגוף מתחיל לחזור לעצמו הורמונלית. עד שהעור בכלל מגיב, התהליך כבר רץ מתחת לפני השטח.</p>
     <p>הפסקת גלולות היא צעד משמעותי לגוף, להורמונים ולעור. ובדיוק בגלל זה — מה שעושים <b>מראש</b> קובע איך הגוף יתמודד בהמשך.</p>
@@ -502,7 +482,7 @@ footer a:hover{color:var(--blush)}
   </div>
 </section>
 
-<!-- ====================== ביולוגיה ====================== -->
+<!-- ============ ביולוגיה ============ -->
 <section>
   <div class="wrap bio-grid">
     <div class="bio-copy reveal">
@@ -520,12 +500,43 @@ footer a:hover{color:var(--blush)}
   </div>
 </section>
 
-<!-- ====================== 3 שלבים ====================== -->
+<!-- ============ ציר זמן המסע ============ -->
+<section class="journey">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">המפה: מבט-על</span>
+      <h2>המסע שלך — מההתחלה ועד הסוף</h2>
+      <p>שלושה שלבים, כל אחד עם מטרה אחת ברורה. ככה זה נראה לפני, במהלך, ואחרי.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-step reveal">
+        <div class="tl-dot">🌱</div>
+        <div class="tl-when">חודש לפני</div>
+        <h4>מניחים בסיס</h4>
+        <p>הכנה שקטה מבפנים — אינסולין, מחסום העור ובדיקות דם. עוד אף אחד לא רואה שינוי.</p>
+      </div>
+      <div class="tl-step reveal">
+        <div class="tl-dot">🌤️</div>
+        <div class="tl-when">שבוע ההפסקה</div>
+        <h4>שומרים יציבות</h4>
+        <p>מינימליזם, שינה איכותית ובלי שינויים דרמטיים. לעשות פחות — נכון.</p>
+      </div>
+      <div class="tl-step reveal">
+        <div class="tl-dot">🌿</div>
+        <div class="tl-when">3 חודשים אחרי</div>
+        <h4>החלון הקריטי</h4>
+        <p>מעקב מחזור, תזונה אנטי-דלקתית וזיהוי מוקדם — בדיוק כשרוב ההתפרצויות מופיעות.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3 שלבים ============ -->
 <section class="steps" id="steps">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">המפה: שלושה שלבים, מטרה אחת ברורה</span>
-      <h2>מה תקבלי במדריך</h2>
+      <span class="eyebrow">בדיוק מה שתקבלי</span>
+      <h2>מה יש בתוך המדריך</h2>
       <p>פרוטוקול מסודר מההתחלה ועד הסוף — כל שלב והמטרה שלו. לפני, במהלך, ואחרי.</p>
     </div>
     <div class="steps-grid">
@@ -563,7 +574,7 @@ footer a:hover{color:var(--blush)}
   </div>
 </section>
 
-<!-- ====================== כלים פרקטיים / value stack ====================== -->
+<!-- ============ כלים פרקטיים ============ -->
 <section class="includes">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -573,22 +584,10 @@ footer a:hover{color:var(--blush)}
     </div>
     <div class="inc-grid">
       <ul class="inc-list reveal">
-        <li>
-          <span class="ic">🩺</span>
-          <div><h4>צ׳קליסט בדיקות דם</h4><p>בדיוק מה לבקש מהרופא/ה: ויטמין D, B12, ברזל ופריטין, אבץ — ולמה כל אחד מהם קריטי.</p></div>
-        </li>
-        <li>
-          <span class="ic">🍽️</span>
-          <div><h4>נוסחת הצלחת המאוזנת</h4><p>כל ארוחה נבנית משלושה רכיבים שמייצבים אינסולין ותומכים באיזון הורמונלי.</p></div>
-        </li>
-        <li>
-          <span class="ic">📔</span>
-          <div><h4>יומן מחזור ועור להדפסה</h4><p>טבלת מעקב שבועית שהופכת את הדפוס האישי שלך לכלי שמאפשר להיערך מראש.</p></div>
-        </li>
-        <li>
-          <span class="ic">🚩</span>
-          <div><h4>דגלים אדומים — מתי לא לחכות</h4><p>הסימנים המדויקים שאומרים שהגיע הזמן לליווי אישי, לפני שהמצב מסלים.</p></div>
-        </li>
+        <li><span class="ic">🩺</span><div><h4>צ׳קליסט בדיקות דם</h4><p>בדיוק מה לבקש מהרופא/ה: ויטמין D, B12, ברזל ופריטין, אבץ — ולמה כל אחד מהם קריטי.</p></div></li>
+        <li><span class="ic">🍽️</span><div><h4>נוסחת הצלחת המאוזנת</h4><p>כל ארוחה נבנית משלושה רכיבים שמייצבים אינסולין ותומכים באיזון הורמונלי.</p></div></li>
+        <li><span class="ic">📔</span><div><h4>יומן מחזור ועור להדפסה</h4><p>טבלת מעקב שבועית שהופכת את הדפוס האישי שלך לכלי שמאפשר להיערך מראש.</p></div></li>
+        <li><span class="ic">🚩</span><div><h4>דגלים אדומים — מתי לא לחכות</h4><p>הסימנים המדויקים שאומרים שהגיע הזמן לליווי אישי, לפני שהמצב מסלים.</p></div></li>
       </ul>
       <div class="plate-card reveal">
         <span class="eyebrow">הצלחת המאוזנת</span>
@@ -599,8 +598,8 @@ footer a:hover{color:var(--blush)}
           <div class="slice s3">ירקות<br><small>ירוקים · צבעוניים</small></div>
         </div>
         <div class="plate-legend">
-          <span><i style="background:var(--rose)"></i>חלבון</span>
-          <span><i style="background:var(--plum)"></i>שומן טוב</span>
+          <span><i style="background:var(--clay)"></i>חלבון</span>
+          <span><i style="background:var(--forest)"></i>שומן טוב</span>
           <span><i style="background:var(--green)"></i>ירקות</span>
         </div>
       </div>
@@ -608,7 +607,38 @@ footer a:hover{color:var(--blush)}
   </div>
 </section>
 
-<!-- ====================== ההצעה / מחיר ====================== -->
+<!-- ============ השוואה עם/בלי ============ -->
+<section class="compare">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">ההבדל האמיתי</span>
+      <h2>להפסיק גלולות — עם המדריך או בלעדיו</h2>
+      <p>אותה החלטה. שתי חוויות שונות לגמרי.</p>
+    </div>
+    <div class="cmp-grid">
+      <div class="cmp cmp-no reveal">
+        <h3>😟 בלי הכנה</h3>
+        <ul>
+          <li><span class="mk">✕</span><span>מחכים שהעור "יחליט" — ומגיבים רק כשההתפרצות כבר בשיא.</span></li>
+          <li><span class="mk">✕</span><span>חיפוש מידע מפוזר וסותר ברשת, בלי לדעת מה נכון בשבילך.</span></li>
+          <li><span class="mk">✕</span><span>ניסויים בטיפוח אגרסיבי ודיאטות שדווקא מחמירים את הדלקת.</span></li>
+          <li><span class="mk">✕</span><span>תסכול, חוסר שליטה, וטיפול ארוך ויקר בהמשך.</span></li>
+        </ul>
+      </div>
+      <div class="cmp cmp-yes reveal">
+        <h3>🌿 עם המדריך</h3>
+        <ul>
+          <li><span class="mk">✓</span><span>מתחילים להתכונן חודש מראש — כשעוד אפשר להשפיע.</span></li>
+          <li><span class="mk">✓</span><span>פרוטוקול אחד ברור, מבוסס ביולוגיה, צעד-אחר-צעד.</span></li>
+          <li><span class="mk">✓</span><span>כלים פרקטיים: צלחת, בדיקות דם ויומן מעקב אישי.</span></li>
+          <li><span class="mk">✓</span><span>שליטה, רוגע, וזיהוי מוקדם — לפני שהמצב מסלים.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ הצעה / מחיר ============ -->
 <section class="offer" id="offer">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -624,7 +654,6 @@ footer a:hover{color:var(--blush)}
         <p>מדריך דיגיטלי + כל הכלים הפרקטיים</p>
       </div>
       <div class="offer-body">
-        <!-- מחיר — ניתן לעריכה -->
         <div class="price-row">
           <span class="price-old">₪197</span>
           <span class="price-now"><small>₪</small>97</span>
@@ -659,7 +688,23 @@ footer a:hover{color:var(--blush)}
   </div>
 </section>
 
-<!-- ====================== דגלים אדומים ====================== -->
+<!-- ============ תוצאות ============ -->
+<section class="outcomes">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">מה יקרה אחרי שתקראי</span>
+      <h2>מהפחד — לשליטה</h2>
+      <p>זה מה שאת לוקחת איתך מהמדריך, כבר מהקריאה הראשונה.</p>
+    </div>
+    <div class="out-grid">
+      <div class="out-card reveal"><div class="ic">🧭</div><h4>בהירות מלאה</h4><p>תביני בדיוק מה קורה בגוף שלך ולמה — בלי בלבול ובלי סיפורי אימה.</p></div>
+      <div class="out-card reveal"><div class="ic">🛡️</div><h4>תוכנית פעולה</h4><p>תדעי מה לעשות בכל שלב, מתי, ולמה — צעד אחר צעד.</p></div>
+      <div class="out-card reveal"><div class="ic">😌</div><h4>שקט נפשי</h4><p>במקום לחשוש מהעור — תרגישי מוכנה, רגועה ובשליטה.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ דגלים אדומים ============ -->
 <section class="flags">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -677,7 +722,7 @@ footer a:hover{color:var(--blush)}
   </div>
 </section>
 
-<!-- ====================== אודות ====================== -->
+<!-- ============ אודות ============ -->
 <section class="about">
   <div class="wrap about-grid">
     <div class="about-photo reveal">
@@ -695,13 +740,12 @@ footer a:hover{color:var(--blush)}
   </div>
 </section>
 
-<!-- ====================== עדויות (ניתן לעריכה/החלפה) ====================== -->
+<!-- ============ עדויות (תוכן דמה לפרוטוטייפ — להחלפה בעדויות אמת) ============ -->
 <section class="testi">
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">מה אומרות נשים</span>
       <h2>הן נערכו מראש — והעור הודה להן</h2>
-      <p>* ניתן להחליף בעדויות אמת מהלקוחות שלך.</p>
     </div>
     <div class="testi-grid">
       <div class="testi-card reveal">
@@ -723,7 +767,7 @@ footer a:hover{color:var(--blush)}
   </div>
 </section>
 
-<!-- ====================== FAQ ====================== -->
+<!-- ============ FAQ ============ -->
 <section class="faq" id="faq">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -759,7 +803,7 @@ footer a:hover{color:var(--blush)}
   </div>
 </section>
 
-<!-- ====================== CTA סופי ====================== -->
+<!-- ============ CTA סופי ============ -->
 <section class="final">
   <div class="wrap">
     <span class="eyebrow">הצעד הבא שלך</span>
@@ -778,7 +822,7 @@ footer a:hover{color:var(--blush)}
   </div>
 </section>
 
-<!-- ====================== פוטר ====================== -->
+<!-- ============ פוטר ============ -->
 <footer>
   <div class="disclaimer">
     <div class="box">
@@ -821,13 +865,11 @@ footer a:hover{color:var(--blush)}
   </div>
 </footer>
 
-<!-- סרגל רכישה צף למובייל -->
 <div class="sticky-buy">
   <div class="p"><b>₪97</b><s>₪197</s><span>מחיר השקה</span></div>
   <a class="btn btn-primary js-buy" href="#">לרכישת המדריך</a>
 </div>
 
-<!-- כפתור וואטסאפ צף -->
 <a class="wa-float js-wa" href="#" target="_blank" rel="noopener" aria-label="דברו איתנו בוואטסאפ">
   <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 .4C7.4.4.4 7.4.4 16c0 2.8.7 5.4 2 7.7L.3 31.6l8.1-2.1c2.2 1.2 4.8 1.9 7.5 1.9 8.6 0 15.6-7 15.6-15.6S24.6.4 16 .4zm0 28.5c-2.5 0-4.8-.7-6.8-1.8l-.5-.3-4.8 1.3 1.3-4.7-.3-.5c-1.3-2-2-4.4-2-6.9C2.6 8.6 8.6 2.6 16 2.6S29.4 8.6 29.4 16 23.4 28.9 16 28.9zm7.4-9.6c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.6-.2.3-.5.3-.9.1-.4-.2-1.7-.6-3.3-2-.1-.1-.2-.2-.3-.4-1-1.2-.2-1.1.5-2.4.1-.2.1-.4 0-.6-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.8c-.3 0-.7.1-1 .5-.4.4-1.4 1.3-1.4 3.2s1.4 3.7 1.6 4c.2.3 2.8 4.3 6.8 6 .9.4 1.7.6 2.2.8.9.3 1.8.2 2.4.2.7-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.3-.3-.7-.5z"/></svg>
 </a>
@@ -837,20 +879,16 @@ footer a:hover{color:var(--blush)}
    הגדרת קישורים — ערוך כאן בלבד.
    ============================================================ */
 var CONFIG = {
-  // קישור עמוד התשלום / הרכישה (החלף בקישור הסליקה שלך מהפאנל):
-  PURCHASE_URL: "#offer",
-  // קישור הוואטסאפ של הקליניק:
-  WHATSAPP_URL: "https://wa.me/message/5DAFERWOXO6WB1"
+  PURCHASE_URL: "#offer",                                   // קישור עמוד התשלום/הרכישה (להחלפה)
+  WHATSAPP_URL: "https://wa.me/message/5DAFERWOXO6WB1"      // קישור הוואטסאפ של הקליניק
 };
 
-// הזרקת הקישורים לכל הכפתורים
 document.querySelectorAll('.js-buy').forEach(function(el){ el.setAttribute('href', CONFIG.PURCHASE_URL); });
 document.querySelectorAll('.js-wa').forEach(function(el){ el.setAttribute('href', CONFIG.WHATSAPP_URL); });
 
-// שנה נוכחית בפוטר
-document.getElementById('year').textContent = new Date().getFullYear();
+var y = document.getElementById('year'); if(y) y.textContent = new Date().getFullYear();
 
-// FAQ אקורדיון
+/* FAQ אקורדיון */
 document.querySelectorAll('.faq-q').forEach(function(btn){
   btn.addEventListener('click', function(){
     var item = btn.closest('.faq-item');
@@ -860,11 +898,20 @@ document.querySelectorAll('.faq-q').forEach(function(btn){
   });
 });
 
-// אנימציית חשיפה בגלילה
-var io = new IntersectionObserver(function(entries){
-  entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-}, { threshold:.12 });
-document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+/* אנימציית חשיפה — עם נפילה בטוחה: אם משהו נכשל, הכל מוצג */
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  function showAll(){ els.forEach(function(el){ el.classList.add('in'); }); }
+  try{
+    if(!('IntersectionObserver' in window)){ showAll(); return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold:.12 });
+    els.forEach(function(el){ io.observe(el); });
+    /* רשת ביטחון: לחשוף הכל אחרי טעינה מלאה */
+    window.addEventListener('load', function(){ setTimeout(showAll, 1200); });
+  }catch(err){ showAll(); }
+})();
 </script>
 
 </body>
