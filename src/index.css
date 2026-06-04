@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-white text-ink font-sans;
+    direction: rtl;
+  }
+}
+
+/* ----------------------------------------------------------------------------
+   "Almost no design" mode: flatten everything to a plain functional look.
+   These global overrides strip rounded corners, shadows and blur so the
+   prototype reads as bare screens + functionality rather than a styled app.
+---------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  text-shadow: none !important;
+  font-style: normal !important;
+  letter-spacing: normal !important;
+  animation: none !important;
+}
+
+/* plain range slider */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: #cccccc;
+  outline: none;
+}
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #1f1f1f;
+  cursor: pointer;
+}
+input[type='range']::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #1f1f1f;
+  border: none;
+  cursor: pointer;
+}
+
+/* keep form controls obvious and plain */
+input,
+select,
+textarea {
+  background: #ffffff;
+}
+
+/* desaturate remaining photos so the prototype stays monochrome/plain */
+img {
+  filter: grayscale(100%);
+}
