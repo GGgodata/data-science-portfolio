@@ -10,6 +10,11 @@ import Step05Categories from '../components/onboarding/steps/Step05Categories'
 import Step06SubCategories from '../components/onboarding/steps/Step06SubCategories'
 import Step07Experience from '../components/onboarding/steps/Step07Experience'
 import Step08Rate from '../components/onboarding/steps/Step08Rate'
+import Step09Areas from '../components/onboarding/steps/Step09Areas'
+import Step10Days from '../components/onboarding/steps/Step10Days'
+import Step11Hours from '../components/onboarding/steps/Step11Hours'
+import Step12IDDoc from '../components/onboarding/steps/Step12IDDoc'
+import Step13Certs from '../components/onboarding/steps/Step13Certs'
 import { SUBCATEGORIES } from '../data/subcategories'
 
 const phoneDigits = (p?: string) => (p || '').replace(/\D/g, '')
@@ -32,6 +37,11 @@ export const validators: Record<number, (d: OnboardingData) => boolean> = {
   6: hasSubForEachCategory,
   7: (d) => !!d.yearsOfExperience,
   8: (d) => (d.hourlyRate ?? 0) >= 50,
+  9: (d) => !!d.anywhere || (d.serviceAreas?.length ?? 0) >= 1,
+  10: (d) => (d.availableDays?.length ?? 0) >= 1,
+  11: (d) => !!d.availableHours?.from && !!d.availableHours?.to,
+  12: (d) => !!d.idDocument,
+  13: () => true,
 }
 
 const STEP_COMPONENTS: Record<number, () => JSX.Element> = {
@@ -43,9 +53,14 @@ const STEP_COMPONENTS: Record<number, () => JSX.Element> = {
   6: Step06SubCategories,
   7: Step07Experience,
   8: Step08Rate,
+  9: Step09Areas,
+  10: Step10Days,
+  11: Step11Hours,
+  12: Step12IDDoc,
+  13: Step13Certs,
 }
 
-const MAX_BUILT_STEP = 8
+const MAX_BUILT_STEP = 13
 
 export default function Onboarding() {
   const { step, data, next, prev } = useOnboarding()
