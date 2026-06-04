@@ -15,6 +15,9 @@ import Step10Days from '../components/onboarding/steps/Step10Days'
 import Step11Hours from '../components/onboarding/steps/Step11Hours'
 import Step12IDDoc from '../components/onboarding/steps/Step12IDDoc'
 import Step13Certs from '../components/onboarding/steps/Step13Certs'
+import Step14Photo from '../components/onboarding/steps/Step14Photo'
+import Step15Bio from '../components/onboarding/steps/Step15Bio'
+import Step16Summary from '../components/onboarding/steps/Step16Summary'
 import { SUBCATEGORIES } from '../data/subcategories'
 
 const phoneDigits = (p?: string) => (p || '').replace(/\D/g, '')
@@ -42,6 +45,9 @@ export const validators: Record<number, (d: OnboardingData) => boolean> = {
   11: (d) => !!d.availableHours?.from && !!d.availableHours?.to,
   12: (d) => !!d.idDocument,
   13: () => true,
+  14: () => true,
+  15: () => true,
+  16: () => true,
 }
 
 const STEP_COMPONENTS: Record<number, () => JSX.Element> = {
@@ -58,9 +64,12 @@ const STEP_COMPONENTS: Record<number, () => JSX.Element> = {
   11: Step11Hours,
   12: Step12IDDoc,
   13: Step13Certs,
+  14: Step14Photo,
+  15: Step15Bio,
+  16: Step16Summary,
 }
 
-const MAX_BUILT_STEP = 13
+const MAX_BUILT_STEP = 16
 
 export default function Onboarding() {
   const { step, data, next, prev } = useOnboarding()
@@ -75,7 +84,12 @@ export default function Onboarding() {
   const StepComponent = STEP_COMPONENTS[step]
 
   return (
-    <OnboardingLayout isValid={isValid} onNext={next} onPrev={handlePrev}>
+    <OnboardingLayout
+      isValid={isValid}
+      onNext={next}
+      onPrev={handlePrev}
+      hideNext={step === 16}
+    >
       <AnimatePresence mode="wait">
         <div key={step}>
           {StepComponent ? (

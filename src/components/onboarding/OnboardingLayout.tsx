@@ -9,6 +9,7 @@ type Props = {
   onNext: () => void
   onPrev: () => void
   nextLabel?: string
+  hideNext?: boolean
 }
 
 export default function OnboardingLayout({
@@ -17,6 +18,7 @@ export default function OnboardingLayout({
   onNext,
   onPrev,
   nextLabel = 'המשך',
+  hideNext = false,
 }: Props) {
   return (
     <div className="min-h-screen bg-cream flex flex-col">
@@ -26,10 +28,14 @@ export default function OnboardingLayout({
       </main>
       <div className="sticky bottom-0 bg-cream/90 backdrop-blur border-t border-stone/15">
         <div className="mx-auto max-w-2xl px-6 py-4 flex items-center justify-between flex-row-reverse">
-          <Button onClick={onNext} disabled={!isValid}>
-            {nextLabel}
-            <ArrowLeft size={18} />
-          </Button>
+          {hideNext ? (
+            <span />
+          ) : (
+            <Button onClick={onNext} disabled={!isValid}>
+              {nextLabel}
+              <ArrowLeft size={18} />
+            </Button>
+          )}
           <Button variant="ghost" onClick={onPrev}>
             <ArrowRight size={18} />
             הקודם
