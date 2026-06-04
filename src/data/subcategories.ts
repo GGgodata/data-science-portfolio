@@ -1,0 +1,75 @@
+export const SUBCATEGORIES: Record<string, { id: string; name: string }[]> = {
+  cleaning: [
+    { id: 'regular', name: 'ניקיון שוטף' },
+    { id: 'deep', name: 'ניקיון יסודי' },
+    { id: 'windows', name: 'חלונות' },
+    { id: 'sofas', name: 'ספות ושטיחים' },
+    { id: 'organizing', name: 'סידור וארגון' },
+    { id: 'laundry', name: 'כביסה וגיהוץ' },
+  ],
+  childcare: [
+    { id: 'babysitter', name: 'בייביסיטר לערב' },
+    { id: 'nanny', name: 'מטפלת קבועה (0-24 חודשים)' },
+    { id: 'night-nurse', name: 'אחות לילה' },
+    { id: 'school-pickup', name: 'איסוף מצהרון' },
+    { id: 'tutoring', name: 'שיעורי בית ומורה פרטי' },
+  ],
+  cooking: [
+    { id: 'daily-cooking', name: 'בישול ביתי שוטף' },
+    { id: 'meal-prep', name: 'הכנת אוכל לשבוע' },
+    { id: 'private-chef', name: 'שף פרטי לערב' },
+    { id: 'grocery', name: 'קניות' },
+    { id: 'catering', name: 'קייטרינג ביתי' },
+  ],
+  pets: [
+    { id: 'walking', name: 'הליכה' },
+    { id: 'boarding', name: 'פנסיון' },
+    { id: 'feeding', name: 'ביקור האכלה' },
+    { id: 'grooming', name: 'טיפוח' },
+  ],
+  gardening: [
+    { id: 'home-garden', name: 'גינת בית' },
+    { id: 'balcony', name: 'מרפסת' },
+    { id: 'pool', name: 'ברכת שחיה' },
+    { id: 'indoor-plants', name: 'צמחי בית' },
+  ],
+  hosting: [
+    { id: 'event-setup', name: 'הקמת אירוע' },
+    { id: 'bartender', name: 'ברמן' },
+    { id: 'waiter', name: 'מלצרות' },
+    { id: 'event-chef', name: 'שף לאירוע' },
+  ],
+  eldercare: [
+    { id: 'companionship', name: 'חברות' },
+    { id: 'doctor-escort', name: 'ליווי לרופא' },
+    { id: 'shopping-help', name: 'קניות' },
+    { id: 'daily-visit', name: 'ביקור בית יומי' },
+  ],
+  errands: [
+    { id: 'pharmacy', name: 'איסוף מבית מרקחת' },
+    { id: 'bank', name: 'בנקים ומוסדות' },
+    { id: 'personal', name: 'עזרה אישית' },
+  ],
+  wellness: [
+    { id: 'fitness', name: 'מאמן כושר' },
+    { id: 'yoga', name: 'יוגה' },
+    { id: 'massage', name: 'עיסוי' },
+    { id: 'nutrition', name: 'יועצת תזונה' },
+  ],
+  transport: [
+    { id: 'carwash', name: 'שטיפה ופרטינג' },
+    { id: 'airport', name: 'נסיעות לשדה תעופה' },
+    { id: 'private-driver', name: 'נהג פרטי' },
+  ],
+  maintenance: [
+    { id: 'electrician', name: 'חשמלאי' },
+    { id: 'plumber', name: 'אינסטלטור' },
+    { id: 'assembly', name: 'הרכבת רהיטים' },
+    { id: 'smart-home', name: 'בית חכם' },
+  ],
+  digital: [
+    { id: 'scheduling', name: 'תיאום פגישות' },
+    { id: 'calendar', name: 'ניהול לוז' },
+    { id: 'menu-planning', name: 'תכנון תפריט' },
+  ],
+}
