@@ -31,7 +31,7 @@ const steps = [
 export default function HowItWorks() {
   return (
     <section className="px-6 md:px-12 lg:px-20 py-24 md:py-32">
-      <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-16 items-start">
+      <div className="mx-auto max-w-3xl">
         <div>
           <motion.div
             variants={fadeUp}
@@ -76,22 +76,6 @@ export default function HowItWorks() {
             ))}
           </motion.div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={viewport}
-          transition={{ duration: 0.7 }}
-          className="hidden lg:block"
-        >
-          <div className="aspect-[3/4] overflow-hidden rounded-sm shadow-xl sticky top-24">
-            <img
-              src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=80"
-              alt="עבודה מקצועית"
-              className="h-full w-full object-cover"
-            />
-          </div>
-        </motion.div>
       </div>
     </section>
   )
