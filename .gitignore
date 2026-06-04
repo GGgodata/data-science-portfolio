@@ -166,3 +166,6 @@ dist-ssr/
 *.local
 .vite/
 npm-debug.log*
+
+# build artifacts
+*.zip
