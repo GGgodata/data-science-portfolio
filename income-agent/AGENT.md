@@ -10,17 +10,42 @@
 
 ## שלב 0 — טעינת הקשר (חובה, לפני כל חיפוש)
 
-קרא בסדר הזה:
+**מקור האמת הוא הדאטהבייס.** פרויקט Supabase בשם `income-scout`
+(פרטי החיבור ב-`income-agent/db/README.md`). קבצי ה-Markdown הם פלט לקריאה.
+
+קרא את קבצי הקריטריונים:
 
 1. `income-agent/criteria/profile.md` — האילוצים של המפעיל
 2. `income-agent/criteria/scoring.md` — סף הפסילה והציון
 3. `income-agent/criteria/research-protocol.md` — סטנדרט הראיות
 4. `income-agent/criteria/output-template.md` — מבנה הפלט
-5. `income-agent/memory/ledger.json` — **כל** הרעיונות שהוצעו או נפסלו בעבר
-6. `income-agent/memory/lessons.md` — מה נלמד מריצות קודמות
-7. `income-agent/memory/feedback.md` — תגובות המפעיל. **זה המקור בעל המשקל הגבוה ביותר.**
 
-מה-ledger וה-feedback הסק שלושה דברים והחזק אותם לאורך כל הריצה:
+ואז שאילתות הזיכרון מהדאטהבייס (דרך כלי Supabase MCP):
+
+```sql
+-- כל מה שכבר הוצע או נפסל — לפי זה מונעים חזרות
+select title, domain, core_mechanic, score, status, reason, run_date
+from ideas order by run_date desc;
+
+-- הנחיות קבועות מהמפעיל — גוברות על כל כלל אחר
+select directive from directives where active;
+
+-- לקחים ארוכי טווח
+select lesson from lessons where active;
+
+-- המשוב עצמו, במיוחד ה"למה"
+select f.verdict, f.note, i.title, i.domain
+from feedback f left join ideas i on i.id = f.idea_id
+order by f.created_at desc limit 50;
+
+-- דפוסי דחייה מצטברים
+select * from v_rejection_patterns;
+```
+
+אם הדאטהבייס לא זמין מסיבה כלשהי — אל תמשיך בשקט. דווח על כך בדוח,
+והשתמש בקבצי הגיבוי שב-`income-agent/memory/` כמקור זיכרון חלופי לאותה ריצה.
+
+מהזיכרון הסק שלושה דברים והחזק אותם לאורך כל הריצה:
 - **מה אסור להציע שוב** — כל רעיון עם אותו מנגנון ליבה שכבר הוצע או נפסל.
 - **לאן נוטה המפעיל** — דפוסים במה שאישר ובמה שדחה.
 - **מה עוד לא נוסה** — תחומים או זוויות שלא כוסו, כדי להטות את החיפוש לשם.
@@ -96,31 +121,35 @@
 
 ---
 
-## שלב 6 — עדכון הזיכרון
+## שלב 6 — עדכון הזיכרון (דאטהבייס)
 
-1. **`memory/ledger.json`** — הוסף רשומה לכל רעיון שנבחן ברצינות (גם שנפסל):
+**כל הכתיבה לדאטהבייס. זה מקור האמת.**
 
-```json
-{
-  "id": "2026-08-05-01",
-  "date": "2026-08-05",
-  "title": "",
-  "domain": "micro-saas-ai | services | content | ecommerce | wildcard",
-  "one_liner": "",
-  "core_mechanic": "מנגנון הליבה — לפי זה בודקים כפילות בריצות הבאות",
-  "score": 0,
-  "confidence": "high | medium | low",
-  "status": "proposed | rejected_by_redteam | rejected_by_user | in_progress | shipped",
-  "reason": "למה נפסל / מה הפסק דין",
-  "evidence_urls": [],
-  "report": "reports/2026-08-05.md"
-}
+1. **`runs`** — רשומה אחת לריצה, כולל מספרי המשפך האמיתיים:
+
+```sql
+insert into runs (run_date, domains_scanned, raw_candidates, survived_filter,
+                  passed_redteam, reported, report_path, notes)
+values ('YYYY-MM-DD', array['micro-saas-ai','services','wildcard'], 34, 7, 4, 3,
+        'reports/YYYY-MM-DD.md', 'מה השתנה מאז הריצה הקודמת')
+returning id;
 ```
 
-2. **`memory/lessons.md`** — הוסף שורה אחת בלבד אם באמת נלמד משהו שישנה חיפושים הבאים
-   (למשל: "תחום X מוצה — 4 ריצות בלי רעיון מעל 70"). אל תמלא ברעש.
+2. **`ideas`** — רשומה לכל רעיון שנבחן ברצינות, **גם אם נפסל**.
+   הפסולים הם מה שמונע חזרה עליהם בריצה הבאה.
+   מלא במיוחד: `core_mechanic` (מפתח הכפילות), `score_breakdown` לפי 6 הרכיבים,
+   `capital_at_risk_ils`, `days_to_first_revenue`, `mvp_hours`, ו-`plan_md` עם 14 הסעיפים.
 
-3. אל תיגע ב-`memory/feedback.md` — זה הקובץ של המפעיל.
+3. **`evidence`** — כל ראיה בשורה נפרדת, מקושרת ל-`idea_id`, עם `url`, `quote`,
+   ו-`verified=true` רק למה שה-Red Team אימת בפועל.
+
+4. **`lessons`** — הוסף שורה **רק** אם נלמד משהו שישנה חיפושים עתידיים. אל תמלא ברעש.
+
+5. אל תכתוב ל-`feedback` ול-`directives` — אלה הטבלאות של המפעיל.
+
+6. **גיבוי לרפו**: כתוב עותק של הדוח ל-`income-agent/reports/YYYY-MM-DD.md`
+   ושורת סיכום לכל רעיון ב-`income-agent/memory/ledger.json`,
+   כדי שתהיה היסטוריה קריאה גם בלי גישה לדאטהבייס.
 
 ---
 
