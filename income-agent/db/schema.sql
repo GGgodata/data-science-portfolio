@@ -18,10 +18,14 @@ create table if not exists public.runs (
   reported          integer not null default 0,   -- הגיעו לדוח הסופי
   report_path       text,                         -- reports/YYYY-MM-DD.md
   notes             text,                         -- "מה השתנה מאז הריצה הקודמת"
+  degraded          boolean not null default false,
+  degraded_reason   text,
   created_at        timestamptz not null default now()
 );
 
 comment on table public.runs is 'ריצה יומית אחת של Income Scout, כולל מספרי המשפך';
+comment on column public.runs.degraded is
+  'true אם הריצה רצה בלי גישה מלאה למקורות הראיות או עם סוכנים שנפלו. מספרי המשפך שלה אינם ברי-השוואה';
 
 -- ============================================================
 -- ideas — כל רעיון שנבחן אי פעם, כולל שנפסלו
@@ -42,8 +46,8 @@ create table if not exists public.ideas (
   confidence             text check (confidence in ('high','medium','low')),
 
   status                 text not null default 'proposed'
-                         check (status in ('proposed','rejected_by_redteam','rejected_by_user',
-                                           'in_progress','shipped')),
+                         check (status in ('proposed','rejected_by_filter','rejected_by_redteam',
+                                           'rejected_by_user','in_progress','shipped')),
   reason                 text,                    -- למה נפסל / פסק הדין
 
   -- המספרים שמכריעים החלטה
@@ -76,16 +80,25 @@ comment on column public.ideas.capital_at_risk_ils is
 -- evidence — הראיות לכל רעיון. בלי זה הרעיון לא קיים
 -- ============================================================
 create table if not exists public.evidence (
-  id           uuid primary key default gen_random_uuid(),
-  idea_id      uuid not null references public.ideas(id) on delete cascade,
-  url          text not null,
-  source_type  text,        -- reddit | review | freelance | competitor | ad_library | trend | workaround | other
-  quote        text,        -- הציטוט עצמו, כדי שלא צריך לפתוח את הלינק
-  verified     boolean not null default false,   -- אומת ע"י Red Team
-  captured_at  timestamptz not null default now()
+  id             uuid primary key default gen_random_uuid(),
+  idea_id        uuid not null references public.ideas(id) on delete cascade,
+  url            text not null,
+  source_type    text,        -- reddit | review | freelance | competitor | ad_library | trend | workaround | regulation | other
+  source_name    text,        -- שם המפרסם/הדומיין — מפתח ספירת העצמאיות
+  quote          text,        -- הציטוט עצמו, כדי שלא צריך לפתוח את הלינק
+  tier           text not null default 'search_only'
+                 check (tier in ('verified','search_only','inferred')),
+  is_buyer_voice boolean not null default false,  -- קול קונה, או קול מוכר?
+  verified       boolean not null default false,
+  captured_at    timestamptz not null default now()
 );
 
 create index if not exists evidence_idea_idx on public.evidence (idea_id);
+
+comment on column public.evidence.tier is
+  'verified = נפתח ואומת בפועל · search_only = URL אמיתי שלא נפתח · inferred = מסקנה, לא ראיה';
+comment on column public.evidence.source_name is
+  'שתי שורות עם אותו source_name הן ראיה אחת, לא שתיים. ראה criteria/evidence-sources.md';
 
 -- ============================================================
 -- feedback — התגובות של המפעיל. המקור בעל המשקל הגבוה ביותר
@@ -158,6 +171,28 @@ select run_date, raw_candidates, survived_filter, passed_redteam, reported,
        array_to_string(domains_scanned, ', ') as domains
 from public.runs
 order by run_date desc;
+
+-- בקרת איכות נגד ניפוח "עוצמת הצורך" — מיישמת את התקרות מ-criteria/scoring.md
+create or replace view public.v_evidence_quality as
+select i.id, i.run_date, i.title, i.score,
+       count(e.id)                                                       as evidence_items,
+       count(distinct e.source_name) filter (where e.tier='verified')    as independent_verified_sources,
+       count(e.id) filter (where e.tier = 'verified')                    as verified_items,
+       count(e.id) filter (where e.is_buyer_voice and e.tier='verified') as verified_buyer_voice,
+       case
+         when count(e.id) = 0
+           then 'אין ראיות כלל'
+         when count(e.id) filter (where e.tier = 'verified') = 0
+           then 'תקרה 8/25 — אין ראיה מאומתת'
+         when count(distinct e.source_name) filter (where e.tier='verified') < 3
+           then 'תקרה 14/25 — פחות מ-3 מקורות מאומתים עצמאיים'
+         when count(e.id) filter (where e.is_buyer_voice and e.tier='verified') = 0
+           then 'תקרה 16/25 — אין קול קונה מאומת'
+         else 'ללא תקרה'
+       end                                                               as need_score_cap
+from public.ideas i
+left join public.evidence e on e.idea_id = i.id
+group by i.id, i.run_date, i.title, i.score;
 
 -- מה נדחה ולמה — הדפוסים שמכווננים ריצות עתידיות
 create or replace view public.v_rejection_patterns as

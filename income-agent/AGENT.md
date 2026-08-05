@@ -18,7 +18,8 @@
 1. `income-agent/criteria/profile.md` — האילוצים של המפעיל
 2. `income-agent/criteria/scoring.md` — סף הפסילה והציון
 3. `income-agent/criteria/research-protocol.md` — סטנדרט הראיות
-4. `income-agent/criteria/output-template.md` — מבנה הפלט
+4. `income-agent/criteria/evidence-sources.md` — מאיפה באות ראיות בפועל, ואיך מדרגים אותן
+5. `income-agent/criteria/output-template.md` — מבנה הפלט
 
 ואז שאילתות הזיכרון מהדאטהבייס (דרך כלי Supabase MCP):
 
@@ -169,8 +170,14 @@ returning id;
    מלא במיוחד: `core_mechanic` (מפתח הכפילות), `score_breakdown` לפי 6 הרכיבים,
    `capital_at_risk_ils`, `days_to_first_revenue`, `mvp_hours`, ו-`plan_md` עם 14 הסעיפים.
 
-3. **`evidence`** — כל ראיה בשורה נפרדת, מקושרת ל-`idea_id`, עם `url`, `quote`,
-   ו-`verified=true` רק למה שה-Red Team אימת בפועל.
+3. **`evidence`** — כל ראיה בשורה נפרדת, מקושרת ל-`idea_id`, עם `url` ו-`quote`,
+   ובנוסף שלושת השדות שבלעדיהם הראיה לא נספרת:
+   - `tier` — `verified` / `search_only` / `inferred`
+   - `source_name` — שם המפרסם או הדומיין. **שתי שורות עם אותו ערך הן ראיה אחת**
+   - `is_buyer_voice` — האם זה קול קונה או קול מוכר
+
+   אחרי הכתיבה, הרץ `select * from v_evidence_quality where run_date = 'YYYY-MM-DD';`
+   ו**ודא שהציון שנתת עומד בתקרה שהתצוגה מחשבת**. אם לא — תקן את הציון, לא את הראיות.
 
 4. **`lessons`** — הוסף שורה **רק** אם נלמד משהו שישנה חיפושים עתידיים. אל תמלא ברעש.
 
