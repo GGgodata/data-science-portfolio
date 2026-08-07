@@ -17,6 +17,7 @@ create table if not exists public.runs (
   passed_redteam    integer not null default 0,   -- שרדו את ה-Red Team
   reported          integer not null default 0,   -- הגיעו לדוח הסופי
   report_path       text,                         -- reports/YYYY-MM-DD.md
+  report_url        text,                         -- דף הסקירה שפורסם (Artifact)
   notes             text,                         -- "מה השתנה מאז הריצה הקודמת"
   degraded          boolean not null default false,
   degraded_reason   text,
